@@ -1,0 +1,23 @@
+
+
+
+
+---------------------------------------------------------------------------------------------
+
+SELECT a.setorFK, b.grupo, a.formaContato, c.grupo ,a.solicitacaoInicio,a.solicitacaoFim
+FROM atendimentos a inner join unidades b on b.unidade = a.unidadeFK inner join (ddt_grl 
+union ddt_gsu 
+union ddt_gte
+union ddt_nss) as c on a.tipoServico = c.tipoAtendimento ; 
+
+select c.grupo from
+(SELECT * FROM ddt_grl union select * from ddt_gsu 
+union select * from ddt_gte 
+union  select * from ddt_nss)  as c; 
+
+select a.setorFK, a.tipoServico, c.grupo from 
+atendimentos a inner join 
+(SELECT * FROM ddt_grl union select * from ddt_gsu 
+union select * from ddt_gte 
+union  select * from ddt_nss)  as c on a.tipoServico = c.tipoAtendimento; 
+

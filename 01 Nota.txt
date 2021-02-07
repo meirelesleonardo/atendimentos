@@ -1,0 +1,46 @@
+
+
+pyuic5 -x GSU.ui -o GSU1.py
+pyinstaller.exe --noconsole --onefile --icon=Ico.ico atendimento-GSU.py
+
+
+
+CREATE TABLE tecnicos (
+mat_gm TEXT NOT NULL,
+usuario TEXT NOT NULL,
+nome TEXT NOT NULL,
+setor TEXT NOT NULL,
+senha TEXT NOT NULL);
+
+INSET INTO tecnicos VALUES ("641.524-6","u6415246","LEONARDO LOUSADA DE MEIRELES","DDT_GSU","6415246");
+
+
+-----------
+CREATE TABLE atendimentos (
+  id int(11) NOT NULL PRIMARY KEY,
+  setor VARCHAR(60) NOT NULL,
+  mat_tecnico VARCHAR(60) DEFAULT NULL,
+  mat_solicitante VARCHAR(45) DEFAULT NULL,
+  unidade VARCHAR(100) DEFAULT NULL,
+  sistema VARCHAR(100) DEFAULT NULL,
+  sol VARCHAR(50) DEFAULT NULL,
+  forma_contato VARCHAR(100) DEFAULT NULL,
+  tipo_servico VARCHAR(100) DEFAULT NULL,
+  grupo_servico VARCHAR(100) DEFAULT NULL,
+  solicitacao_inicio DATETIME DEFAULT NULL,
+  solicitacao_fim DATETIME DEFAULT NULL,
+  descricao TEXT DEFAULT NULL,
+  remoto VARCHAR(200) DEFAULT NULL,
+  hInicio TIME DEFAULT NULL,
+  hFim TIME DEFAULT NULL,
+  ip VARCHAR(45) DEFAULT NULL
+);
+---------------------------------
+
+CREATE TABLE IF NOT EXISTS servidores (
+  mat_gm1 VARCHAR(45) DEFAULT NULL,
+  mat_gm2 VARCHAR(45) DEFAULT NULL,
+  ergon VARCHAR(45) DEFAULT NULL,
+  nome VARCHAR(100) DEFAULT NULL,
+  bio_pub VARCHAR(100) DEFAULT NULL
+);
